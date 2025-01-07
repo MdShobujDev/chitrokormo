@@ -8,9 +8,11 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        hindSiliguri: ["var(--font-hindSiliguri)"],
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: "#D31A7A",
       },
     },
   },
