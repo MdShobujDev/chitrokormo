@@ -1,3 +1,6 @@
+import BottomNav from "@/components/BottomNav";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import { theme } from "@/theme/antd";
 import { hindSiliguriFonts } from "@/utils/customFonts";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
@@ -21,7 +24,12 @@ export default function RootLayout({
         <body
           className={`${hindSiliguriFonts.variable} font-hindSiliguri antialiased`}
         >
-          <AntdRegistry>{children}</AntdRegistry>
+          <AntdRegistry>
+            <Header />
+            {children}
+            <Footer />
+            <BottomNav />
+          </AntdRegistry>
         </body>
       </html>
     </ConfigProvider>
