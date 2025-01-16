@@ -20,24 +20,23 @@ const Header = () => {
         </div>
         {/* search by category and products name  */}
 
-        <div className="relative flex-1">
+        <div className=" rounded-full border-[.1rem] border-primary flex items-center pr-1 sm:pr-2 pl-2">
+          <span className=" text-lg">
+            <CiSearch />
+          </span>
           <input
             type="text"
             id="Search"
             placeholder="Search for..."
-            className="w-full rounded-md border border-gray-200 py-2.5 pe-10 pl-3 shadow sm:text-sm"
+            className="w-full border-none outline-none bg-transparent  sm:py-2.5 py-1.5  pl-3 sm:text-sm text-xs"
           />
-
-          <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
-            <button type="button" className="text-gray-600 hover:text-gray-700">
-              <span className="sr-only">Search</span>
-              <CiSearch />
-            </button>
+          <span className=" bg-primary text-white sm:px-3 px-2 sm:py-1 py-[2px] sm:text-base text-sm rounded-full">
+            Search
           </span>
         </div>
 
-        <div className=" flex gap-5 items-center">
-          <div className=" md:flex hidden">
+        <div className="flex  gap-5 items-center">
+          <div className="min-[950px]:flex hidden">
             <ul className=" flex gap-2">
               <Link
                 href="/"
@@ -65,31 +64,33 @@ const Header = () => {
               </Link>
             </ul>
           </div>
-          <div className=" md:flex hidden gap-4 items-center">
-            <div className=" text-2xl cursor-pointer">
+          <div className=" flex gap-4 items-center ">
+            <div className=" md:block  hidden text-2xl cursor-pointer">
               <TbCategoryPlus />
             </div>
-            <Badge count={1}>
-              <div className=" text-2xl cursor-pointer">
-                <IoCartOutline />
-              </div>
-            </Badge>
-            <div className=" text-[1.3rem] cursor-pointer">
+            <div className="md:block hidden self-end">
+              <Badge count={1}>
+                <div className="text-2xl cursor-pointer">
+                  <IoCartOutline />
+                </div>
+              </Badge>
+            </div>
+            <div className=" md:block  hidden  text-[1.3rem] cursor-pointer">
               <FaRegUser />
             </div>
+            <div
+              onClick={() => setToggle(!toggle)}
+              className=" p-2 min-[950px]:hidden flex text-2xl cursor-pointer"
+            >
+              {toggle ? <FaXmark /> : <FaBars />}
+            </div>
           </div>
-        </div>
-        <div
-          onClick={() => setToggle(!toggle)}
-          className=" p-2 md:hidden flex text-2xl cursor-pointer"
-        >
-          {toggle ? <FaXmark /> : <FaBars />}
         </div>
       </div>
       {/* small device menu bar  */}
 
       <div
-        className={`bg-gray-200/90 absolute backdrop-blur-xl md:hidden block transition-all ease-linear duration-200 ${cn(
+        className={`bg-white shadow-md absolute backdrop-blur-xl min-[950px]:hidden block transition-all ease-linear duration-200 ${cn(
           toggle ? "left-0" : "-left-80",
           toggle && "right-0"
         )}`}

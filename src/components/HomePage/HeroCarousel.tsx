@@ -10,22 +10,42 @@ import React from "react";
 
 const HeroCarousel: React.FC = () => {
   return (
-    <section className=" max-w-7xl mx-auto ">
+    <section className=" max-w-7xl mx-auto">
       <Carousel autoplay>
         <div>
-          <Image src={banner_1} alt="banner_1" className=" aspect-[14/4]" />
+          <Image
+            src={banner_1}
+            alt="banner_1"
+            className=" sm:aspect-[16/5] aspect-[14/5]"
+          />
         </div>
         <div>
-          <Image src={banner_2} alt="banner_2" className=" aspect-[14/4]" />
+          <Image
+            src={banner_2}
+            alt="banner_2"
+            className=" sm:aspect-[16/5] aspect-[14/5]"
+          />
         </div>
         <div>
-          <Image src={banner_3} alt="banner_3" className=" aspect-[14/4]" />
+          <Image
+            src={banner_3}
+            alt="banner_3"
+            className=" sm:aspect-[16/5] aspect-[14/5]"
+          />
         </div>
         <div>
-          <Image src={banner_4} alt="banner_4" className=" aspect-[14/4]" />
+          <Image
+            src={banner_4}
+            alt="banner_4"
+            className=" sm:aspect-[16/5] aspect-[14/5]"
+          />
         </div>
         <div>
-          <Image src={banner_5} alt="banner_5" className=" aspect-[14/4]" />
+          <Image
+            src={banner_5}
+            alt="banner_5"
+            className=" sm:aspect-[16/5] aspect-[14/5]"
+          />
         </div>
       </Carousel>
     </section>
