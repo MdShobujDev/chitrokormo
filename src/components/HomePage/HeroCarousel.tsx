@@ -9,10 +9,6 @@ import Image from "next/image";
 import React from "react";
 
 const HeroCarousel: React.FC = () => {
-  const onChange = (currentSlide: number) => {
-    console.log(currentSlide);
-  };
-
   return (
     <section className=" max-w-7xl mx-auto ">
       <Carousel autoplay>
