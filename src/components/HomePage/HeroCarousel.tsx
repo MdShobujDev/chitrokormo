@@ -16,35 +16,35 @@ const HeroCarousel: React.FC = () => {
           <Image
             src={banner_1}
             alt="banner_1"
-            className=" sm:aspect-[16/5] aspect-[14/5]"
+            className=" sm:aspect-[16/5] aspect-[16/7]"
           />
         </div>
         <div>
           <Image
             src={banner_2}
             alt="banner_2"
-            className=" sm:aspect-[16/5] aspect-[14/5]"
+            className=" sm:aspect-[16/5] aspect-[16/7]"
           />
         </div>
         <div>
           <Image
             src={banner_3}
             alt="banner_3"
-            className=" sm:aspect-[16/5] aspect-[14/5]"
+            className=" sm:aspect-[16/5] aspect-[16/7]"
           />
         </div>
         <div>
           <Image
             src={banner_4}
             alt="banner_4"
-            className=" sm:aspect-[16/5] aspect-[14/5]"
+            className=" sm:aspect-[16/5] aspect-[16/7]"
           />
         </div>
         <div>
           <Image
             src={banner_5}
             alt="banner_5"
-            className=" sm:aspect-[16/5] aspect-[14/5]"
+            className=" sm:aspect-[16/5] aspect-[16/7]"
           />
         </div>
       </Carousel>

@@ -87,17 +87,17 @@ const categoryItems = [
 
 const Category = () => {
   return (
-    <section className=" max-w-7xl mx-auto px-5 py-10">
+    <section className=" max-w-7xl mx-auto sm:px-5 px-2 md:pt-10 pt-5">
       <div>
-        <h1 className=" text-2xl font-medium text-primary">
+        <h1 className=" sm:text-2xl text-xl  font-bold text-primary">
           ক্যাটাগরি অনুযায়ী কেনাকাটা করুন
         </h1>
-        <div className=" py-5">
+        <div className=" sm:pt-5 pt-3">
           <EmblaCarousel autoplay>
             {categoryItems.map((item) => (
               <div
                 key={item.id}
-                className="[flex:0_0_60%] min-[400px]:[flex:0_0_47%]  min-[500px]:[flex:0_0_38%] sm:[flex:0_0_30%] min-[720px]:[flex:0_0_25%] lg:[flex:0_0_18.7%] flex flex-col justify-between gap-3 rounded-lg  overflow-hidden relative cursor-pointer select-none bg-[#F3F3F3] p-4"
+                className="[flex:0_0_55%] min-[400px]:[flex:0_0_47%]  min-[500px]:[flex:0_0_38%] sm:[flex:0_0_30%] min-[720px]:[flex:0_0_25%] lg:[flex:0_0_18.7%] flex flex-col justify-between gap-3 rounded-lg  overflow-hidden relative cursor-pointer select-none bg-[#F3F3F3] p-4"
               >
                 {/* <Image
                   src={item.image}

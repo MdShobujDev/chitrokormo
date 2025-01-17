@@ -6,7 +6,7 @@ import TrendingProducts from "@/components/HomePage/TrendingProducts";
 export default function Home() {
   return (
     <>
-      <main>
+      <main className=" mb-5">
         <HeroCarousel />
         <Category />
         <TrendingProducts />

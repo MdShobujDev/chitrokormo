@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FaStar } from "react-icons/fa6";
 import { IoCartOutline } from "react-icons/io5";
 import { TbCurrencyTaka } from "react-icons/tb";
@@ -29,6 +30,9 @@ const ProductCard = ({ data }: { data: ProductData }) => {
         <div className=" absolute top-2 left-2 bg-primary px-1.5 py-0.5  rounded-2xl font-bold text-xs text-white max-w-max">
           save 5%
         </div>
+        <div className="absolute top-2 right-2 cursor-pointer bg-white p-0.5 rounded hover:bg-primary hover:text-white transition-all duration-150 ease-in md:group-hover/product:block md:hidden">
+          <IoCartOutline size={18} />
+        </div>
       </div>
       <div className=" flex flex-col gap-2">
         <h2 className=" text-gray-800 line-clamp-1">
@@ -51,16 +55,20 @@ const ProductCard = ({ data }: { data: ProductData }) => {
           </div>
         </div>
         <div className=" flex items-center justify-between">
-          <div className=" flex items-center gap-2 text-orange-400">
+          <div className=" flex items-center gap-1 text-orange-400 text-[.7rem]">
             <FaStar />
             <FaStar />
             <FaStar />
             <FaStar />
             <FaStar />
           </div>
-          <div className=" cursor-pointer bg-white p-1 rounded hover:bg-primary hover:text-white transition-all duration-150 ease-in">
-            <IoCartOutline size={20} />
-          </div>
+
+          <Link
+            className="md:text-sm text-xs hover:bg-black bg-primary text-white max-w-max sm:px-3 px-2 py-[4px] rounded-2xl  transition-all ease-linear duration-200"
+            href={data.link}
+          >
+            <span>এখনই কিনুন</span>
+          </Link>
         </div>
       </div>
     </div>

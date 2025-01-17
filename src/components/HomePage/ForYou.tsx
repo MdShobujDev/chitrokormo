@@ -148,16 +148,16 @@ const items = [
 
 const ForYou = () => {
   return (
-    <section className=" max-w-7xl mx-auto sm:px-5 px-3 cursor-pointer overflow-hidden py-10">
-      <div className=" mb-5 flex items-center justify-between gap-5">
-        <h1 className=" text-2xl font-medium text-primary">
+    <section className="max-w-7xl mx-auto sm:px-5 px-2 cursor-pointer overflow-hidden md:pt-10 pt-5">
+      <div className=" md:mb-5 mb-3 flex items-center justify-between gap-5">
+        <h1 className=" sm:text-2xl text-xl font-bold text-primary">
           শুধুমাত্র আপনার জন্য
         </h1>
-        <h2 className=" text-primary underline underline-offset-4 hover:text-blue-600 transition-all">
+        <h2 className=" text-primary underline underline-offset-4 hover:text-blue-600 transition-all font-medium">
           সব পণ্য দেখুন
         </h2>
       </div>
-      <div className=" grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] w-full gap-3">
+      <div className=" grid sm:grid-cols-[repeat(auto-fit,_minmax(220px,_1fr))] grid-cols-[repeat(auto-fit,_minmax(160px,_1fr))] w-full gap-3">
         {items.map((item) => (
           <div key={item.id}>
             <ProductCard data={item} />
