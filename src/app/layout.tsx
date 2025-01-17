@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import { theme } from "@/theme/antd";
 import { hindSiliguriFonts } from "@/utils/customFonts";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+import "animate.css";
 import { ConfigProvider } from "antd";
 import type { Metadata } from "next";
 import "./globals.css";

@@ -12,19 +12,22 @@ import {
 
 type PropType = {
   children?: React.ReactNode;
+  autoplay?: boolean; // Add autoplay prop
 };
 
-const EmblaCarousel: React.FC<PropType> = ({ children }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({}, [Autoplay()]);
+const EmblaCarousel: React.FC<PropType> = ({ children, autoplay = false }) => {
+  // Initialize EmblaCarousel with or without autoplay
+  const plugins = autoplay ? [Autoplay()] : [];
+  const [emblaRef, emblaApi] = useEmblaCarousel({}, plugins);
 
   const onNavButtonClick = useCallback((emblaApi: EmblaCarouselType) => {
-    const autoplay = emblaApi?.plugins()?.autoplay;
-    if (!autoplay) return;
+    const autoplayPlugin = emblaApi?.plugins()?.autoplay;
+    if (!autoplayPlugin) return;
 
     const resetOrStop =
-      autoplay.options.stopOnInteraction === false
-        ? autoplay.reset
-        : autoplay.stop;
+      autoplayPlugin.options.stopOnInteraction === false
+        ? autoplayPlugin.reset
+        : autoplayPlugin.stop;
 
     resetOrStop();
   }, []);
@@ -38,7 +41,7 @@ const EmblaCarousel: React.FC<PropType> = ({ children }) => {
 
   return (
     <section className="w-full m-auto relative group">
-      <div className=" overflow-hidden " ref={emblaRef}>
+      <div className="overflow-hidden" ref={emblaRef}>
         <div
           className="flex gap-4 touch-pan-y touch-pinch-zoom mx-2"
           style={{

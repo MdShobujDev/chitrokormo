@@ -60,7 +60,7 @@ export const PrevButton: React.FC<PropType> = (props) => {
 
   return (
     <button
-      className="   disabled:text-red-500 disabled:bg-red-200 appearance-none bg-blue-200 hover:bg-blue-300 transition-all duration-300 ease-linear touch-manipulation  no-underline cursor-pointer p-0 m-0  w-8 h-8 z-10 rounded-full text-bule-600 hidden group-hover:flex items-center justify-center shadow-xl  "
+      className="disabled:opacity-0 appearance-none bg-primary/80 hover:bg-primary text-white transition-all duration-300 ease-linear touch-manipulation  no-underline cursor-pointer p-0 m-0  w-8 h-8 z-10 rounded-full text-bule-600 hidden group-hover:flex items-center justify-center shadow-xl  "
       style={{
         WebkitTapHighlightColor: "rgba(49, 49, 49, 0.5)",
         WebkitAppearance: "none",
@@ -84,7 +84,7 @@ export const NextButton: React.FC<PropType> = (props) => {
 
   return (
     <button
-      className="  disabled:text-red-500 disabled:bg-red-200 appearance-none bg-blue-200 hover:bg-blue-300 transition-all duration-300 ease-linear touch-manipulation  no-underline cursor-pointer p-0 m-0  w-8 h-8 z-10 rounded-full text-bule-600 hidden group-hover:flex items-center justify-center shadow-xl "
+      className=" disabled:opacity-0 text-white appearance-none bg-primary/90 hover:bg-primary transition-all duration-300 ease-linear touch-manipulation  no-underline cursor-pointer p-0 m-0  w-8 h-8 z-10 rounded-full text-bule-600 hidden group-hover:flex items-center justify-center shadow-xl "
       style={{
         WebkitTapHighlightColor: "rgba(49, 49, 49, 0.5)",
         WebkitAppearance: "none",

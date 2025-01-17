@@ -20,7 +20,7 @@ const Footer = () => {
             <Image src={Logo} alt="logo" width={100} />
           </Link>
           <p className=" text-[#ffffffe6]">
-            <strong>আয়াশমার্ট </strong>– আপনার লাইফস্টাইলের জন্য নির্ভরযোগ্য
+            <strong>আয়াশমার্ট</strong>– আপনার লাইফস্টাইলের জন্য নির্ভরযোগ্য
             ইকমার্স। আমরা সরবরাহ করি মানসম্পন্ন লাইফস্টাইল পণ্য, দ্রুত ডেলিভারি
             এবং সন্তুষ্টি নিশ্চিত সেবা।
           </p>
@@ -67,7 +67,7 @@ const Footer = () => {
         </div>
         <div className=" grid grid-cols-[repeat(auto-fit,_minmax(140px,_1fr))] w-full gap-2">
           <div className="flex flex-col gap-8 ">
-            <h2 className=" text-white font-medium text-lg">বিভাগসমূহ</h2>
+            <h2 className=" text-white font-medium text-lg">ক্যাটাগরিসমূহ</h2>
             <ul className=" text-[#ffffffe6] flex flex-col gap-1">
               <Link
                 href="/"

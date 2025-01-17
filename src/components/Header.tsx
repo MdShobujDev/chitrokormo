@@ -30,7 +30,7 @@ const Header = () => {
             placeholder="Search for..."
             className="w-full border-none outline-none bg-transparent  sm:py-2.5 py-1.5  pl-3 sm:text-sm text-xs"
           />
-          <span className=" bg-primary text-white sm:px-3 px-2 sm:py-1 py-[2px] sm:text-base text-sm rounded-full">
+          <span className=" bg-primary text-white sm:px-3 px-2 sm:py-1 py-[2px] sm:text-base text-sm rounded-full cursor-pointer">
             Search
           </span>
         </div>
@@ -68,7 +68,7 @@ const Header = () => {
             <div className=" md:block  hidden text-2xl cursor-pointer">
               <TbCategoryPlus />
             </div>
-            <div className="md:block hidden self-end">
+            <div className="md:block hidden self-end mt-2">
               <Badge count={1}>
                 <div className="text-2xl cursor-pointer">
                   <IoCartOutline />
