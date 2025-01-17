@@ -3,7 +3,18 @@ import { FaStar } from "react-icons/fa6";
 import { IoCartOutline } from "react-icons/io5";
 import { TbCurrencyTaka } from "react-icons/tb";
 
-const ProductCard = ({ data }: any) => {
+interface ProductData {
+  id: number;
+  title: string;
+  save: string;
+  image: string;
+  link: string;
+  discount_amoumt: string;
+  main_amount: string;
+  star: string;
+}
+
+const ProductCard = ({ data }: { data: ProductData }) => {
   return (
     <div className=" bg-[#F3F3F3] p-2 rounded-lg  flex flex-col justify-between gap-3 shadow group/product hover:scale-[1.02] transition-all duration-200 ease-linear">
       {/* image use here  */}
