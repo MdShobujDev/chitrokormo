@@ -111,39 +111,6 @@ const items = [
     main_amount: "299",
     star: "5",
   },
-  {
-    id: 11,
-    title: "ডার্ক মোড ওয়ালপেপার ডার্ক মোড ওয়ালপেপারডার্ক মোড ওয়ালপেপার",
-    save: "5",
-    image:
-      "https://images.unsplash.com/photo-1626148748481-7fc1005ec55f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    link: "/",
-    discount_amoumt: "250",
-    main_amount: "299",
-    star: "5",
-  },
-  {
-    id: 12,
-    title: "ডার্ক মোড ওয়ালপেপার ডার্ক মোড ওয়ালপেপারডার্ক মোড ওয়ালপেপার",
-    save: "5",
-    image:
-      "https://plus.unsplash.com/premium_photo-1678752717582-f46bb39890c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    link: "/",
-    discount_amoumt: "250",
-    main_amount: "299",
-    star: "5",
-  },
-  {
-    id: 13,
-    title: "ডার্ক মোড ওয়ালপেপার ডার্ক মোড ওয়ালপেপারডার্ক মোড ওয়ালপেপার",
-    save: "5",
-    image:
-      "https://plus.unsplash.com/premium_photo-1679690708461-11c19962a25f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    link: "/",
-    discount_amoumt: "250",
-    main_amount: "299",
-    star: "5",
-  },
 ];
 
 const ForYou = () => {
