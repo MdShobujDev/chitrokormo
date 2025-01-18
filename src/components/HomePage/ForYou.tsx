@@ -115,7 +115,7 @@ const items = [
 
 const ForYou = () => {
   return (
-    <section className="max-w-7xl mx-auto sm:px-5 px-2 cursor-pointer overflow-hidden md:pt-10 pt-5">
+    <section className="max-w-7xl mx-auto sm:px-5 px-2  overflow-hidden md:pt-10 pt-5">
       <div className=" md:mb-5 mb-3 flex items-center justify-between gap-5">
         <h1 className=" sm:text-2xl text-xl font-bold text-primary">
           শুধুমাত্র আপনার জন্য

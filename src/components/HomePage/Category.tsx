@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import EmblaCarousel from "../ui/EmblaCarouel";
 
 const categoryItems = [
@@ -97,38 +96,20 @@ const Category = () => {
             {categoryItems.map((item) => (
               <div
                 key={item.id}
-                className="[flex:0_0_55%] min-[400px]:[flex:0_0_47%]  min-[500px]:[flex:0_0_38%] sm:[flex:0_0_30%] min-[720px]:[flex:0_0_25%] lg:[flex:0_0_18.7%] flex flex-col justify-between gap-3 rounded-lg  overflow-hidden relative cursor-pointer select-none bg-[#F3F3F3] p-4"
+                className="[flex:0_0_55%] min-[400px]:[flex:0_0_47%]  min-[500px]:[flex:0_0_38%] sm:[flex:0_0_30%] min-[720px]:[flex:0_0_25%] lg:[flex:0_0_18.7%] flex flex-col justify-between gap-1 rounded-lg  overflow-hidden relative cursor-pointer select-none bg-[#F3F3F3] p-2"
               >
-                {/* <Image
+                <Image
                   src={item.image}
                   alt={item.title}
                   width={500}
                   height={500}
-                  className="aspect-[3/4] object-cover"
-                />
-                <span className="absolute left-3 bottom-1 font-medium text-primary ">
-                  {item.title}
-                </span> */}
-
-                <div>
-                  <h2 className=" md:text-lg text-base">{item.title}</h2>
-                  <p className=" sm:text-sm text-xs">
-                    {item.available_quantity} items
-                  </p>
-                </div>
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={200}
-                  height={200}
                   className=" rounded-lg aspect-[7/5]"
                 />
-                <Link
-                  className="md:text-sm text-xs hover:bg-black bg-primary text-white max-w-max px-3 py-[4px] rounded-2xl flex items-center gap-1 transition-all ease-linear duration-200"
-                  href={item.link}
-                >
-                  <span>এখনই কিনুন</span>
-                </Link>
+                <div>
+                  <h2 className=" md:text-lg sm:text-base text-sm text-center">
+                    {item.title}
+                  </h2>
+                </div>
               </div>
             ))}
           </EmblaCarousel>
