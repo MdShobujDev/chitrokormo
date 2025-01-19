@@ -1,5 +1,4 @@
 import Image from "next/image";
-import EmblaCarousel from "../ui/EmblaCarouel";
 
 const categoryItems = [
   {
@@ -91,28 +90,25 @@ const Category = () => {
         <h1 className=" sm:text-2xl text-xl  font-bold text-primary">
           ক্যাটাগরি অনুযায়ী কেনাকাটা করুন
         </h1>
-        <div className=" sm:pt-5 pt-3">
-          <EmblaCarousel autoplay>
-            {categoryItems.map((item) => (
-              <div
-                key={item.id}
-                className="[flex:0_0_55%] min-[400px]:[flex:0_0_47%]  min-[500px]:[flex:0_0_38%] sm:[flex:0_0_30%] min-[720px]:[flex:0_0_25%] lg:[flex:0_0_18.7%] flex flex-col justify-between gap-1 rounded-lg  overflow-hidden relative cursor-pointer select-none bg-[#F3F3F3] p-2"
-              >
+        <div className=" sm:pt-5 pt-3 flex sm:gap-2 gap-1 flex-wrap justify-center items-center">
+          {categoryItems.map((item) => (
+            <div className=" sm:w-28 w-16 flex flex-col justify-between gap-1 rounded-lg  overflow-hidden relative cursor-pointer select-none bg-[#F3F3F3] sm:p-2 p-1 group/category">
+              <div className=" bg-red-300 rounded-lg overflow-hidden ">
                 <Image
                   src={item.image}
                   alt={item.title}
                   width={500}
                   height={500}
-                  className=" rounded-lg aspect-[7/5]"
+                  className="  aspect-[7/6] group-hover/category:scale-[1.05] transition-all duration-300 ease-linear "
                 />
-                <div>
-                  <h2 className=" md:text-lg sm:text-base text-sm text-center">
-                    {item.title}
-                  </h2>
-                </div>
               </div>
-            ))}
-          </EmblaCarousel>
+              <div>
+                <h2 className=" sm:text-xs text-[6px] text-center">
+                  {item.title}
+                </h2>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
