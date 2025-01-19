@@ -92,7 +92,10 @@ const Category = () => {
         </h1>
         <div className=" sm:pt-5 pt-3 flex sm:gap-2 gap-1 flex-wrap justify-center items-center">
           {categoryItems.map((item) => (
-            <div className=" sm:w-28 w-16 flex flex-col justify-between gap-1 rounded-lg  overflow-hidden relative cursor-pointer select-none bg-[#F3F3F3] sm:p-2 p-1 group/category">
+            <div
+              key={item.id}
+              className=" sm:w-28 w-16 flex flex-col justify-between gap-1 rounded-lg  overflow-hidden relative cursor-pointer select-none bg-[#F3F3F3] sm:p-2 p-1 group/category"
+            >
               <div className=" bg-red-300 rounded-lg overflow-hidden ">
                 <Image
                   src={item.image}
