@@ -54,10 +54,10 @@ const EmblaCarousel: React.FC<PropType> = ({ children, autoplay = false }) => {
         </div>
       </div>
 
-      <div className="flex items-center justify-center absolute top-0 bottom-0 -left-4">
+      <div className="flex items-center justify-center absolute top-0 bottom-0 sm:-left-4 left-2">
         <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
       </div>
-      <div className="flex items-center justify-center absolute top-0 bottom-0 -right-4">
+      <div className="flex items-center justify-center absolute top-0 bottom-0 sm:-right-4 right-2">
         <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
       </div>
     </section>
