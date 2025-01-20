@@ -17,7 +17,7 @@ interface ProductData {
 
 const ProductCard = ({ data }: { data: ProductData }) => {
   return (
-    <div className=" bg-[#F3F3F3] p-2 rounded-lg  flex flex-col justify-between sm:gap-3 gap-2 shadow group/product hover:scale-[1.02] transition-all duration-200 ease-linear">
+    <div className=" bg-[#F3F3F3] p-2 rounded-lg  flex flex-col justify-between sm:gap-3 gap-2 shadow group/product ">
       {/* image use here  */}
       <div className=" relative overflow-hidden rounded-lg">
         <Image

@@ -74,7 +74,7 @@ const FlashSaleProduct = () => {
   return (
     <div>
       <div>
-        <EmblaCarousel>
+        <EmblaCarousel dragFree arrowButtons>
           {items.map((item) => (
             <div
               key={item.id}

@@ -17,10 +17,10 @@ const Footer = () => {
       <div className=" max-w-7xl mx-auto py-16 px-5 flex min-[910px]:flex-row flex-col gap-5">
         <div className=" flex flex-col gap-3 min-[910px]:flex-[0_0_30%] ">
           <Link href="/">
-            <Image src={Logo} alt="logo" width={100} />
+            <Image src={Logo} alt="logo" width={120} />
           </Link>
           <p className=" text-[#ffffffe6]">
-            <strong>আয়াশমার্ট</strong>– আপনার লাইফস্টাইলের জন্য নির্ভরযোগ্য
+            <strong>চিত্রকর্ম</strong>– আপনার লাইফস্টাইলের জন্য নির্ভরযোগ্য
             ইকমার্স। আমরা সরবরাহ করি মানসম্পন্ন লাইফস্টাইল পণ্য, দ্রুত ডেলিভারি
             এবং সন্তুষ্টি নিশ্চিত সেবা।
           </p>
@@ -254,14 +254,19 @@ const Footer = () => {
         </div>
       </div>
       <div className=" border-t">
-        <div className="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between gap-2 min-[700px]:flex-row flex-col">
+        <div className="max-w-7xl mx-auto px-5 sm:py-4 py-3 flex items-center justify-between gap-2 min-[700px]:flex-row flex-col">
           <div>
-            <p className="text-[#ffffffe6] text-sm">
-              কপিরাইট © 2024 আয়াশমার্ট সর্বস্বত্ব সংরক্ষিত
+            <p className="text-[#ffffffe6] text-[15px]">
+              কপিরাইট © 2024 চিত্রকর্ম সর্বস্বত্ব সংরক্ষিত
             </p>
           </div>
           <div>
-            <Image src={PaymentGateway} alt="PaymentGateway" width={400} />
+            <Image
+              src={PaymentGateway}
+              alt="PaymentGateway"
+              width={450}
+              height={100}
+            />
           </div>
         </div>
       </div>

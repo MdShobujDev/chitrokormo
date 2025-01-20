@@ -1,3 +1,4 @@
+import FeatureSection from "@/components/FeatureSection";
 import Category from "@/components/HomePage/Category";
 import FlashSale from "@/components/HomePage/Flash Sale/FlashSale";
 import ForYou from "@/components/HomePage/ForYou";
@@ -8,13 +9,14 @@ import TrendingProducts from "@/components/HomePage/TrendingProducts";
 export default function Home() {
   return (
     <>
-      <main className=" mb-5">
+      <main>
         <HeroCarousel />
         <Category />
         <TrendingProducts />
         <TopProduct />
         <FlashSale />
         <ForYou />
+        <FeatureSection />
       </main>
     </>
   );
