@@ -42,8 +42,8 @@ const items = [
 
 const FeatureSection = () => {
   return (
-    <section className=" max-w-7xl mx-auto px-5 mt-8 bg-gray-100 py-5">
-      <div className=" grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(160px,_1fr))] gap-3">
+    <section className=" mt-8 bg-gray-100 ">
+      <div className=" max-w-7xl mx-auto px-5 py-5 grid grid-cols-[repeat(auto-fit,_minmax(90px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(160px,_1fr))] gap-3">
         {items.map((item) => (
           <div key={item.id} className=" flex flex-col items-center gap-1 ">
             <span className=" bg-primary text-white sm:text-4xl text-2xl sm:p-3 p-2 rounded-full">

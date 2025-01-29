@@ -1,6 +1,6 @@
 "use client";
 import Logo from "@/../public/images/logo.png";
-import { cn } from "@/utils/cs";
+import { cn } from "@/utils/cn";
 import { Badge } from "antd";
 import Image from "next/image";
 import Link from "next/link";

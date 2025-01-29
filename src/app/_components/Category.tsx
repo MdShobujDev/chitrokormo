@@ -1,5 +1,5 @@
 import Image from "next/image";
-import EmblaCarousel from "../ui/EmblaCarouel";
+import EmblaCarousel from "../../components/shared/EmblaCarouel";
 
 const categoryItems = [
   {

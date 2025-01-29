@@ -1,5 +1,5 @@
-import EmblaCarousel from "../ui/EmblaCarouel";
-import ProductCard from "../ui/ProductCard";
+import EmblaCarousel from "@/components/shared/EmblaCarouel";
+import ProductCard from "@/components/ui/ProductCard";
 
 const items = [
   {
@@ -70,12 +70,9 @@ const items = [
   },
 ];
 
-const TrendingProducts = () => {
+const FlashSaleProduct = () => {
   return (
-    <section className=" max-w-7xl mx-auto px-5 md:pt-10 pt-5 ">
-      <h1 className=" sm:text-2xl text-xl font-bold text-primary">
-        ট্রেন্ডিং পণ্য
-      </h1>
+    <div>
       <div>
         <EmblaCarousel dragFree arrowButtons>
           {items.map((item) => (
@@ -88,8 +85,8 @@ const TrendingProducts = () => {
           ))}
         </EmblaCarousel>
       </div>
-    </section>
+    </div>
   );
 };
 
-export default TrendingProducts;
+export default FlashSaleProduct;
