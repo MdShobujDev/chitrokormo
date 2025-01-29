@@ -86,7 +86,7 @@ const CustomerInfo = () => {
             </div>
           </div>
         </div>
-        {/* customer info end */}
+        {/* customer info end  */}
 
         {/* shipping info start */}
         <div className="flex flex-col gap-3 shadow bg-gray-50 p-5 rounded-md">
