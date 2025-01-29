@@ -123,7 +123,7 @@ const CustomerInfo = () => {
                 defaultActiveKey={["1"]}
                 onChange={onChange}
                 expandIcon={({ isActive }) =>
-                  isActive ? <RadioBtn checke /> : <RadioBtn />
+                  isActive ? <RadioBtn checked /> : <RadioBtn />
                 }
                 items={items}
               />

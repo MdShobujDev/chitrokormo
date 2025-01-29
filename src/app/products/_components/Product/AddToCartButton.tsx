@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { TbCurrencyTaka } from "react-icons/tb";
 
-const AddToCartButton = ({ totalQuantity }: any) => {
+interface AddToCartButtonProps {
+  totalQuantity: number;
+}
+
+const AddToCartButton: React.FC<AddToCartButtonProps> = ({ totalQuantity }) => {
   return (
     <Link
       href="/cart"

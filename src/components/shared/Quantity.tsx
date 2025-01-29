@@ -4,11 +4,17 @@ import { cn } from "@/utils/cn";
 import { useEffect, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 
-const Quantity = ({
+interface QuantityProps {
+  handleQuantity: (quantity: number) => void;
+  primary?: boolean;
+  secondary?: boolean;
+}
+
+const Quantity: React.FC<QuantityProps> = ({
   handleQuantity,
   primary = false,
   secondary = false,
-}: any) => {
+}) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleDecrement = () => {

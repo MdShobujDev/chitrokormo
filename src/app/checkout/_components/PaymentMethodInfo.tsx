@@ -11,7 +11,17 @@ const Input = styled.input`
     border: 1.5px solid #6d198a;
   }
 `;
-const PaymentMethodInfo = ({ method, number, send_money_cost }: any) => {
+interface PaymentMethodInfoProps {
+  method: string;
+  number: string;
+  send_money_cost: string;
+}
+
+const PaymentMethodInfo: React.FC<PaymentMethodInfoProps> = ({
+  method,
+  number,
+  send_money_cost,
+}) => {
   return (
     <div className=" text-gray-700 flex flex-col gap-2">
       <p>

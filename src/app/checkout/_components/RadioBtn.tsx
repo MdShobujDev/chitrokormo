@@ -1,9 +1,13 @@
 import { Radio } from "antd";
 
-const RadioBtn = ({ checke = false }: any) => {
+interface RadioBtnProps {
+  checked?: boolean;
+}
+
+const RadioBtn: React.FC<RadioBtnProps> = ({ checked = false }) => {
   return (
     <div>
-      <Radio checked={checke}></Radio>
+      <Radio checked={checked}></Radio>
     </div>
   );
 };
