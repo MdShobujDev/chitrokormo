@@ -21,7 +21,7 @@ const ReviewModal: React.FC = () => {
     <>
       <button
         onClick={showModal}
-        className=" max-w-max border border-primary hover:bg-primary hover:text-white text-sm transition-all duration-200 ease-linear px-2.5 py-1.5 rounded-full"
+        className=" max-w-max border border-primary hover:bg-primary hover:text-white  transition-all duration-200 ease-linear px-2.5 py-1.5 rounded-full  sm:text-sm text-xs"
       >
         Write a review
       </button>

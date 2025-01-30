@@ -7,16 +7,18 @@ const Reviews = () => {
     <section className="flex gap-5 flex-col min-[850px]:flex-row">
       <div className="flex gap-3 flex-col min-w-max">
         <div>
-          <h1 className=" text-lg font-medium">Customer Reviews</h1>
+          <h1 className=" text-base sm:text-lg font-medium">
+            Customer Reviews
+          </h1>
           <div className="flex gap-1">
-            <div className=" flex items-center gap-1 text-orange-400 text-[.7rem]">
+            <div className=" flex items-center gap-1 text-orange-400 text-[.6rem] sm:text-[.7rem]">
               <FaStar />
               <FaStar />
               <FaStar />
               <FaStar />
               <FaStar />
             </div>
-            <p>Based on 2 review</p>
+            <p className=" sm:text-base text-xs">Based on 2 review</p>
           </div>
         </div>
 

@@ -36,21 +36,34 @@ const Quantity: React.FC<QuantityProps> = ({
       className={cn(
         "   rounded-3xl flex items-center  max-w-max",
         secondary && " px-1 py-0.5 bg-gray-200/50 gap-2 backdrop-blur",
-        primary && " px-3 py-2 bg-gray-100 gap-5"
+        primary && " px-2.5 py-1.5 bg-gray-100 gap-5"
       )}
     >
       <button
         onClick={handleDecrement}
-        className={cn(" text-gray-600 ", primary && "p-2", secondary && "p-1")}
+        className={cn(
+          " text-gray-600 ",
+          primary && "p-1.5",
+          secondary && "p-1"
+        )}
       >
         <FaMinus />
       </button>
-      <span className={cn(secondary && " text-base", primary && "text-xl")}>
+      <span
+        className={cn(
+          secondary && " text-base",
+          primary && "sm:text-xl text-lg"
+        )}
+      >
         {quantity}
       </span>
       <button
         onClick={handleIncrement}
-        className={cn(" text-gray-600 ", primary && "p-2", secondary && "p-1")}
+        className={cn(
+          " text-gray-600 ",
+          primary && "p-1.5",
+          secondary && "p-1"
+        )}
       >
         <FaPlus />
       </button>

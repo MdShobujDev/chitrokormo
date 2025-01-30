@@ -35,13 +35,21 @@ const PaymentMethodInfo: React.FC<PaymentMethodInfoProps> = ({
       <div className=" flex flex-col gap-3">
         <div className=" flex min-[500px]:flex-row flex-col gap-1 min-[500px]:items-center justify-between">
           <label className=" flex-1">{`${method} Number :`}</label>
-          <Input type="text" placeholder="017XXXXXXXX" />
+          <Input
+            type="text"
+            placeholder="017XXXXXXXX"
+            className=" placeholder:text-gray-500"
+          />
         </div>
         <div className=" flex min-[500px]:flex-row flex-col gap-1 min-[500px]:items-center justify-between">
           <label htmlFor="" className=" flex-1">
             {`${method} Transaction ID :`}
           </label>
-          <Input type="text" placeholder="8N7A6D5EE7M" />
+          <Input
+            type="text"
+            placeholder="8N7A6D5EE7M"
+            className=" placeholder:text-gray-500"
+          />
         </div>
       </div>
     </div>

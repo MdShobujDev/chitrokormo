@@ -65,7 +65,7 @@ const ReviewsCarousel = () => {
         {Reviews.map((review) => (
           <div
             key={review.id}
-            className="flex-[0_0_90%] min-[500px]:flex-[0_0_75%]
+            className="flex-[0_0_100%] min-[400px]:flex-[0_0_75%] min-[500px]:flex-[0_0_60%]
             sm:flex-[0_0_50%] md:flex-[0_0_40%] min-[850px]:flex-[0_0_50%] lg:flex-[0_0_33%]  flex gap-3 border p-2 rounded-md cursor-pointer"
           >
             <div className=" min-w-max">
@@ -74,16 +74,20 @@ const ReviewsCarousel = () => {
               </div>
             </div>
             <div className=" mt-1.5 flex flex-col gap-1">
-              <div className="flex items-center gap-1 text-orange-400 text-[.7rem]">
+              <div className="flex items-center gap-1 text-orange-400 text-[.6rem] sm:text-[.7rem]">
                 <FaStar />
                 <FaStar />
                 <FaStar />
                 <FaStar />
                 <FaStar />
               </div>
-              <h1 className="text-lg font-medium">{review.name}</h1>
-              <p className=" text-sm  text-gray-700">{review.date}</p>
-              <p className=" text-sm font-light italic line-clamp-2">
+              <h1 className="sm:text-lg text-base line-clamp-1 font-medium">
+                {review.name}
+              </h1>
+              <p className=" text-xs sm:text-sm  text-gray-700">
+                {review.date}
+              </p>
+              <p className=" text-xs sm:text-sm font-light italic line-clamp-2">
                 {review.review}
               </p>
             </div>

@@ -16,16 +16,16 @@ const Product = () => {
         {/* middle section  */}
         <div className=" mt-3 flex md:flex-row flex-col gap-5">
           {/* image gallery section  */}
-          <div>
+          <div className=" flex-1">
             <ImageGallery />
           </div>
           {/* product details section  */}
-          <div>
+          <div className=" flex-1">
             <ProductDetails />
           </div>
         </div>
         {/* description additional info reviews return policies section  */}
-        <div className=" border p-5 rounded mt-5 overflow-hidden">
+        <div className=" border sm:p-5 p-2 rounded mt-5 overflow-hidden">
           <Tab />
         </div>
         {/* bottom related products section  */}

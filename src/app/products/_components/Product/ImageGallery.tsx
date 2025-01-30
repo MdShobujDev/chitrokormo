@@ -26,8 +26,8 @@ const ImageGallery = () => {
   const [currentImage, setCurrentImage] = useState(0);
 
   return (
-    <section className="flex min-[990px]:flex-row md:flex-col sm:flex-row flex-col gap-3">
-      <div className="flex min-[990px]:flex-col md:flex-row sm:flex-col flex-row gap-1 md:order-last min-[990px]:order-none order-last sm:order-none">
+    <section className="flex lg:flex-row md:flex-col sm:flex-row flex-col gap-3">
+      <div className="flex lg:flex-col md:flex-row sm:flex-col flex-row gap-1 md:order-last lg:order-none order-last sm:order-none">
         {Images.map((image, index) => (
           <div
             onClick={() => setCurrentImage(index)}

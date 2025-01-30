@@ -9,14 +9,14 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({ totalQuantity }) => {
   return (
     <Link
       href="/cart"
-      className=" flex items-center justify-center gap-2 bg-black hover:bg-primary transition-all ease-linear duration-200 px-4 py-2 rounded-3xl text-white"
+      className=" flex items-center justify-center gap-2 bg-black hover:bg-primary transition-all ease-linear duration-200 px-4 py-1.5 rounded-3xl text-white sm:text-base text-sm"
     >
       <span>কার্টে যোগ করুন -</span>
       <div className=" flex items-center">
-        <span className=" text-2xl">
-          <TbCurrencyTaka />
-        </span>
-        <h2 className=" mt-[2px]  text-xl font-bold ">{250 * totalQuantity}</h2>
+        <TbCurrencyTaka className=" sm:text-2xl text-xl" />
+        <h2 className=" mt-[2px]  sm:text-xl font-bold text-lg">
+          {250 * totalQuantity}
+        </h2>
       </div>
     </Link>
   );

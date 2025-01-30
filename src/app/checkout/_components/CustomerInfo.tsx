@@ -6,7 +6,6 @@ import { Collapse, CollapseProps } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { IoCartOutline } from "react-icons/io5";
-import styled from "styled-components";
 import AutoComplete from "./Autocomplete";
 import PaymentMethodInfo from "./PaymentMethodInfo";
 import RadioBtn from "./RadioBtn";
@@ -51,16 +50,6 @@ const items: CollapseProps["items"] = [
   },
 ];
 
-const Input = styled.input`
-  border: 1.5px solid #d1d5db;
-  outline: none;
-  border-radius: 5px;
-  padding: 10px 8px;
-  &:focus {
-    border: 1.5px solid #6d198a;
-  }
-`;
-
 const CustomerInfo = () => {
   const onChange = (key: string | string[]) => {
     console.log(key);
@@ -74,15 +63,31 @@ const CustomerInfo = () => {
           <h1 className=" text-2xl font-medium ">Customer Information</h1>
           <div className=" flex flex-col gap-5">
             <div className=" grid min-[550px]:grid-cols-2 grid-cols-1 gap-5">
-              <Input type="email" placeholder="ইমেইল (optional)" />
-              <Input type="text" placeholder="সম্পূর্ণ নাম *" />
+              <input
+                className=" border-[1.5px] border-gray-300 outline-none rounded-[5px] py-[10px] px-2 focus:border-[#6d198a] placeholder:text-gray-500"
+                type="email"
+                placeholder="ইমেইল (optional)"
+              />
+              <input
+                className=" border-[1.5px] border-gray-300 outline-none rounded-[5px] py-[10px] px-2 focus:border-[#6d198a] placeholder:text-gray-500"
+                type="text"
+                placeholder="সম্পূর্ণ নাম *"
+              />
             </div>
             <div className=" grid min-[550px]:grid-cols-2 grid-cols-1 gap-5">
               <AutoComplete />
-              <Input type="text" placeholder="সম্পূর্ণ ঠিকানা *" />
+              <input
+                className=" border-[1.5px] border-gray-300 outline-none rounded-[5px] py-[10px] px-2 focus:border-[#6d198a] placeholder:text-gray-500"
+                type="text"
+                placeholder="সম্পূর্ণ ঠিকানা *"
+              />
             </div>
             <div className=" grid grid-cols-1">
-              <Input type="text" placeholder="ফোন নম্বর *" />
+              <input
+                className=" border-[1.5px] border-gray-300 outline-none rounded-[5px] py-[10px] px-2 focus:border-[#6d198a] placeholder:text-gray-500"
+                type="text"
+                placeholder="ফোন নম্বর *"
+              />
             </div>
           </div>
         </div>
@@ -97,7 +102,7 @@ const CustomerInfo = () => {
           <div className="flex justify-between items-center border-[1.5px] border-gray-300 rounded-md p-3">
             <input
               type="text"
-              className=" bg-transparent"
+              className=" bg-transparent placeholder:text-gray-500"
               placeholder="ডেলিভারি চার্জ"
               disabled
             />
