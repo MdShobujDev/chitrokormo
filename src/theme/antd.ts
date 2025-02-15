@@ -16,6 +16,9 @@ const theme: ThemeConfig = {
       contentBg: "#fff",
       headerBg: "#fff",
     },
+    Checkbox: {
+      colorBorder: "gray",
+    },
   },
 };
 

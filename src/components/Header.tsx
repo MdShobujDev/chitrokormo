@@ -1,14 +1,14 @@
 "use client";
 import Logo from "@/../public/images/logo.png";
 import { cn } from "@/utils/cn";
-import { Badge } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import { FaBars, FaRegUser, FaXmark } from "react-icons/fa6";
-import { IoCartOutline } from "react-icons/io5";
+import { FaBars, FaXmark } from "react-icons/fa6";
 import { TbCategoryPlus } from "react-icons/tb";
+import ProfileDropDown from "./drop down/PrfofileDropDown";
+import CartDrawer from "./shopping cart/CartDrawer";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
@@ -64,23 +64,19 @@ const Header = () => {
               </Link>
             </ul>
           </div>
-          <div className=" flex gap-4 items-center ">
+          <div className=" flex gap-4 items-center  ">
             <div className=" md:block  hidden text-2xl cursor-pointer">
               <TbCategoryPlus />
             </div>
-            <div className="md:block hidden self-end mt-2">
-              <Badge count={1}>
-                <div className="text-2xl cursor-pointer">
-                  <IoCartOutline />
-                </div>
-              </Badge>
+            <div className="md:block hidden">
+              <CartDrawer />
             </div>
-            <div className=" md:block  hidden  text-[1.3rem] cursor-pointer">
-              <FaRegUser />
+            <div className=" md:block hidden cursor-pointer">
+              <ProfileDropDown />
             </div>
             <div
               onClick={() => setToggle(!toggle)}
-              className=" p-2 min-[950px]:hidden flex text-2xl cursor-pointer"
+              className=" py-2 pl-2 min-[950px]:hidden flex text-2xl cursor-pointer"
             >
               {toggle ? <FaXmark /> : <FaBars />}
             </div>
