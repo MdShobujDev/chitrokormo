@@ -116,14 +116,6 @@ const items = [
 const ProductsBody = () => {
   return (
     <section className="flex flex-col gap-10 justify-between items-center">
-      {/* <div className=" md:mb-5 mb-3 flex items-center justify-between gap-5">
-        <h1 className=" sm:text-2xl text-xl font-bold text-primary">
-          শুধুমাত্র আপনার জন্য
-        </h1>
-        <h2 className=" text-primary underline underline-offset-4 hover:text-blue-600 transition-all font-medium">
-          সব পণ্য দেখুন
-        </h2>
-      </div> */}
       <div className=" grid sm:grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] grid-cols-[repeat(auto-fit,_minmax(160px,_1fr))] w-full gap-3">
         {items.map((item) => (
           <div key={item.id}>
@@ -131,12 +123,8 @@ const ProductsBody = () => {
           </div>
         ))}
       </div>
-      {/* <div className="flex items-center justify-center">
-        <h1 className="  mt-5 text-center bg-primary hover:bg-pink-700 max-w-max text-white px-10 py-2 rounded cursor-pointer">
-          আরও দেখুন
-        </h1>
-      </div> */}
-      <PaginationProducts />
+
+      <PaginationProducts total={2000} />
     </section>
   );
 };
