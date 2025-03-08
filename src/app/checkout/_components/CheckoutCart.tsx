@@ -20,7 +20,7 @@ interface ItemProps {
   };
 }
 const CheckoutCart = () => {
-  const { cart, loading } = useCart();
+  const { cart } = useCart();
   return (
     <section className=" bg-gray-50 p-5 rounded-md shadow flex flex-col gap-8">
       <h1 className=" text-2xl font-medium">আপনার কার্ট</h1>

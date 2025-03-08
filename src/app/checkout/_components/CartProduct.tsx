@@ -4,7 +4,6 @@ import { useCart } from "@/context/CartContext";
 import formatteeNumber from "@/utils/formatteNumber";
 import { Badge } from "antd";
 import Image from "next/image";
-import { useState } from "react";
 import { FaXmark } from "react-icons/fa6";
 
 interface Image {
@@ -25,7 +24,7 @@ interface ItemProps {
   };
 }
 const CartProduct = ({ item, id }: { item: ItemProps; id: string }) => {
-  const [quantity, setQuantity] = useState(item?.product_quantity);
+  const quantity = item?.product_quantity;
   const { updateCartItem, deleteCartItem } = useCart();
 
   const handleIncrement = async () => {

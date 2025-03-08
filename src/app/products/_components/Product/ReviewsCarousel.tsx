@@ -6,17 +6,17 @@ interface ReviewProps {
   documentId: string;
   rating: number;
   review: string;
-  user_permissions_user: {
+  users_permissions_user: {
     username: string;
   };
 }
 
 const ReviewsCarousel = ({ reviews }: { reviews: ReviewProps[] }) => {
-  // console.log(reviews);
+  console.log(reviews);
   return (
     <div className="">
       <EmblaCarousel arrowButtons autoplay>
-        {reviews.map((review: any, index: number) => (
+        {reviews.map((review: ReviewProps, index: number) => (
           <div
             key={index}
             className=" flex-[0_0_100%] min-[400px]:flex-[0_0_75%] min-[500px]:flex-[0_0_60%]
@@ -30,7 +30,7 @@ const ReviewsCarousel = ({ reviews }: { reviews: ReviewProps[] }) => {
             <div className=" mt-1.5 flex flex-col gap-1">
               <Rate disabled defaultValue={review.rating} allowHalf />
               <h1 className="sm:text-lg text-base line-clamp-1 font-medium">
-                {review.users_permissions_user.name}
+                {review.users_permissions_user.username}
               </h1>
               <p className=" text-xs sm:text-sm  text-gray-700">
                 {review.date}

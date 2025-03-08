@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { HiMiniXMark } from "react-icons/hi2";
 
 const ActiveFilter: React.FC = () => {
@@ -12,8 +12,17 @@ const ActiveFilter: React.FC = () => {
   const sort = searchParams.get("sort");
   const minPrice = searchParams.get("minPrice");
   const maxPrice = searchParams.get("maxPrice");
-  const availability = searchParams.get("availability")?.split(",") || [];
-  const categories = searchParams.get("categories")?.split(",") || [];
+
+  // Memoize availability and categories to prevent unnecessary re-renders
+  const availability = useMemo(
+    () => searchParams.get("availability")?.split(",") || [],
+    [searchParams]
+  );
+
+  const categories = useMemo(
+    () => searchParams.get("categories")?.split(",") || [],
+    [searchParams]
+  );
 
   // Store active filter items
   const [filterItems, setFilterItems] = useState<
@@ -37,6 +46,7 @@ const ActiveFilter: React.FC = () => {
           key: `availability-${item}`,
         })
       );
+
       categories.forEach((item) =>
         filters.push({
           label: `${item}`,

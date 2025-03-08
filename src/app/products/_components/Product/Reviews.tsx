@@ -1,4 +1,5 @@
 "use client";
+
 import { calculateAverageRating } from "@/utils/getAverageRating";
 import { Rate } from "antd";
 import ReviewModal from "./ReviewModal";
@@ -10,7 +11,7 @@ interface ReviewProps {
     documentId: string;
     rating: number;
     review: string;
-    user_permissions_user: {
+    users_permissions_user: {
       username: string;
     };
   }[];

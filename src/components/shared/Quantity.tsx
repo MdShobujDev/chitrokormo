@@ -18,22 +18,6 @@ const Quantity: React.FC<QuantityProps> = ({
   primary = false,
   secondary = false,
 }) => {
-  // const [quantity, setQuantity] = useState(1);
-
-  // const handleDecrement = () => {
-  //   if (quantity > 1) {
-  //     setQuantity(quantity - 1);
-  //   }
-  // };
-
-  // const handleIncrement = () => {
-  //   setQuantity(quantity + 1);
-  // };
-
-  // useEffect(() => {
-  //   handleQuantity(quantity);
-  // }, [quantity]);
-
   return (
     <div
       className={cn(

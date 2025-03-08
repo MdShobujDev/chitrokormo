@@ -34,7 +34,7 @@ interface ReviewProps {
   documentId: string;
   rating: number;
   review: string;
-  user_permissions_user: {
+  users_permissions_user: {
     username: string;
   };
 }

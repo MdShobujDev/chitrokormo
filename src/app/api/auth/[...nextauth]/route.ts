@@ -32,8 +32,6 @@ export const authOptions = {
   ],
   callbacks: {
     async jwt({ token, user }: { token: any; user?: any }) {
-      console.log("t", token);
-      console.log("u", user);
       if (user) {
         token.jwt = user.jwt; // Store JWT token in session
       }

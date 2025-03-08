@@ -1,6 +1,6 @@
 "use client";
 
-import { ApolloQueryResult, gql, useMutation, useQuery } from "@apollo/client";
+import { ApolloQueryResult, gql, useQuery } from "@apollo/client";
 import axios from "axios";
 import { createContext, ReactNode, useContext } from "react";
 import { useAuth } from "./AuthContext";
@@ -31,13 +31,13 @@ const GET_CART = gql`
 `;
 
 // GraphQL Mutation to delete a cart item
-const DELETE_CART_ITEM = gql`
-  mutation Mutation($documentId: ID!) {
-    deleteCart(documentId: $documentId) {
-      documentId
-    }
-  }
-`;
+// const DELETE_CART_ITEM = gql`
+//   mutation Mutation($documentId: ID!) {
+//     deleteCart(documentId: $documentId) {
+//       documentId
+//     }
+//   }
+// `;
 
 // Define TypeScript interfaces
 interface Image {
@@ -96,7 +96,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       },
     },
   });
-  const [deleteCart] = useMutation(DELETE_CART_ITEM);
+  // const [deleteCart] = useMutation(DELETE_CART_ITEM);
 
   const cart = data?.carts?.[0] || null;
 
@@ -213,19 +213,19 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
   const addCartItem = async () => {
     try {
-      const payload = {
-        data: {
-          users_permissions_user: null,
-          cart_products: [
-            {
-              price: null,
-              product_quantity: null,
-              size: null,
-              product: null,
-            },
-          ],
-        },
-      };
+      // const payload = {
+      //   data: {
+      //     users_permissions_user: null,
+      //     cart_products: [
+      //       {
+      //         price: null,
+      //         product_quantity: null,
+      //         size: null,
+      //         product: null,
+      //       },
+      //     ],
+      //   },
+      // };
     } catch (error) {
       console.error("Error updating cart item:", error);
     }

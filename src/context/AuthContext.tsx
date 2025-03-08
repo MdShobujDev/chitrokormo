@@ -1,11 +1,12 @@
 "use client";
 
+import { Session } from "next-auth";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { createContext, ReactNode, useContext } from "react";
 
 // Define the AuthContext type
 interface AuthContextType {
-  userSession: any;
+  userSession: Session | null;
   login: () => void;
   logout: () => void;
 }
