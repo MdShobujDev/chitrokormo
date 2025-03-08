@@ -1,7 +1,7 @@
 import { Breadcrumb } from "antd";
 import Link from "next/link";
 
-const BreadCrumb = () => {
+const BreadCrumb = ({ title }: { title: string }) => {
   return (
     <div>
       <Breadcrumb
@@ -13,7 +13,7 @@ const BreadCrumb = () => {
             title: <Link href="/products">Products</Link>,
           },
           {
-            title: "wallboards",
+            title: <p className=" line-clamp-1">{title}</p>,
           },
         ]}
       />

@@ -3,9 +3,13 @@ import { TbCurrencyTaka } from "react-icons/tb";
 
 interface AddToCartButtonProps {
   totalQuantity: number;
+  price: string;
 }
 
-const AddToCartButton: React.FC<AddToCartButtonProps> = ({ totalQuantity }) => {
+const AddToCartButton: React.FC<AddToCartButtonProps> = ({
+  totalQuantity,
+  price,
+}) => {
   return (
     <Link
       href="/cart"
@@ -15,7 +19,9 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({ totalQuantity }) => {
       <div className=" flex items-center">
         <TbCurrencyTaka className=" sm:text-2xl text-xl" />
         <h2 className=" mt-[2px]  sm:text-xl font-bold text-lg">
-          {250 * totalQuantity}
+          {new Intl.NumberFormat("en-US").format(
+            parseInt(price.replace(/,/g, ""), 10) * totalQuantity
+          )}
         </h2>
       </div>
     </Link>

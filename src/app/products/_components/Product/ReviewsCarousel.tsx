@@ -1,71 +1,25 @@
 import EmblaCarousel from "@/components/shared/EmblaCarouel";
-import { FaStar } from "react-icons/fa6";
+import { Rate } from "antd";
 
-const Reviews = [
-  {
-    id: 1,
-    name: "John Doe",
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, voluptates.",
-    date: "2021-09-21",
-    image: "https://randomuser.me/api/portraits",
-  },
-  {
-    id: 2,
-    name: "John Doe",
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, voluptates.",
-    date: "2021-09-21",
-    image: "https://randomuser.me/api/portraits",
-  },
-  {
-    id: 3,
-    name: "John Doe",
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, voluptates.",
-    date: "2021-09-21",
-    image: "https://randomuser.me/api/portraits",
-  },
-  {
-    id: 4,
-    name: "John Doe",
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, voluptates.",
-    date: "2021-09-21",
-    image: "https://randomuser.me/api/portraits",
-  },
-  {
-    id: 5,
-    name: "John Doe",
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, voluptates.",
-    date: "2021-09-21",
-    image: "https://randomuser.me/api/portraits",
-  },
-  {
-    id: 6,
-    name: "John Doe",
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, voluptates.",
-    date: "2021-09-21",
-    image: "https://randomuser.me/api/portraits",
-  },
-];
+interface ReviewProps {
+  date: string;
+  documentId: string;
+  rating: number;
+  review: string;
+  user_permissions_user: {
+    username: string;
+  };
+}
 
-const ReviewsCarousel = () => {
+const ReviewsCarousel = ({ reviews }: { reviews: ReviewProps[] }) => {
+  // console.log(reviews);
   return (
-    <div>
+    <div className="">
       <EmblaCarousel arrowButtons autoplay>
-        {Reviews.map((review) => (
+        {reviews.map((review: any, index: number) => (
           <div
-            key={review.id}
-            className="flex-[0_0_100%] min-[400px]:flex-[0_0_75%] min-[500px]:flex-[0_0_60%]
+            key={index}
+            className=" flex-[0_0_100%] min-[400px]:flex-[0_0_75%] min-[500px]:flex-[0_0_60%]
             sm:flex-[0_0_50%] md:flex-[0_0_40%] min-[850px]:flex-[0_0_50%] lg:flex-[0_0_33%]  flex gap-3 border p-2 rounded-md cursor-pointer"
           >
             <div className=" min-w-max">
@@ -74,15 +28,9 @@ const ReviewsCarousel = () => {
               </div>
             </div>
             <div className=" mt-1.5 flex flex-col gap-1">
-              <div className="flex items-center gap-1 text-orange-400 text-[.6rem] sm:text-[.7rem]">
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-              </div>
+              <Rate disabled defaultValue={review.rating} allowHalf />
               <h1 className="sm:text-lg text-base line-clamp-1 font-medium">
-                {review.name}
+                {review.users_permissions_user.name}
               </h1>
               <p className=" text-xs sm:text-sm  text-gray-700">
                 {review.date}

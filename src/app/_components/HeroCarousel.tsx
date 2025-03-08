@@ -1,53 +1,38 @@
-"use client";
-import banner_1 from "@/../public/images/Hero_section_banner/banner_1.jpg";
-import banner_2 from "@/../public/images/Hero_section_banner/banner_2.jpg";
-import banner_3 from "@/../public/images/Hero_section_banner/banner_3.jpg";
-import banner_4 from "@/../public/images/Hero_section_banner/banner_4.jpg";
-import banner_5 from "@/../public/images/Hero_section_banner/banner_5.jpg";
-import { Carousel } from "antd";
+import EmblaCarousel from "@/components/shared/EmblaCarouel";
+import client from "@/lib/apollo-client";
+import { GET_BANNERS } from "@/lib/queries";
 import Image from "next/image";
 import React from "react";
 
-const HeroCarousel: React.FC = () => {
+interface BannerProps {
+  documentId: string;
+  slug: string;
+  banner_image: {
+    url: string;
+    documentId: string;
+  };
+}
+const HeroCarousel: React.FC = async () => {
+  const { data } = await client.query({ query: GET_BANNERS });
+
   return (
-    <section className=" max-w-7xl mx-auto">
-      <Carousel autoplay>
-        <div>
-          <Image
-            src={banner_1}
-            alt="banner_1"
-            className=" sm:aspect-[16/5] aspect-[16/7]"
-          />
-        </div>
-        <div>
-          <Image
-            src={banner_2}
-            alt="banner_2"
-            className=" sm:aspect-[16/5] aspect-[16/7]"
-          />
-        </div>
-        <div>
-          <Image
-            src={banner_3}
-            alt="banner_3"
-            className=" sm:aspect-[16/5] aspect-[16/7]"
-          />
-        </div>
-        <div>
-          <Image
-            src={banner_4}
-            alt="banner_4"
-            className=" sm:aspect-[16/5] aspect-[16/7]"
-          />
-        </div>
-        <div>
-          <Image
-            src={banner_5}
-            alt="banner_5"
-            className=" sm:aspect-[16/5] aspect-[16/7]"
-          />
-        </div>
-      </Carousel>
+    <section className="max-w-7xl mx-auto">
+      <EmblaCarousel dotButtons autoplay>
+        {data.banners.map((banner: BannerProps) => (
+          <div
+            key={banner.documentId}
+            className="[flex:0_0_100%] w-full h-full"
+          >
+            <Image
+              src={banner.banner_image.url}
+              alt="Banner Image"
+              width={1280} // Ensure width is provided
+              height={500} // Ensure height is provided
+              className="sm:aspect-[16/5] aspect-[16/7] "
+            />
+          </div>
+        ))}
+      </EmblaCarousel>
     </section>
   );
 };

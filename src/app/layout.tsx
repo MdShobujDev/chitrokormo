@@ -1,12 +1,17 @@
 import BottomNav from "@/components/BottomNav";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { AuthProvider } from "@/context/AuthContext";
+import { CartProvider } from "@/context/CartContext";
 import { theme } from "@/theme/antd";
+import ApolloClientProvider from "@/utils/ApolloClientProvider";
 import { hindSiliguriFonts } from "@/utils/customFonts";
+import UserSessionProvider from "@/utils/UserSessionProvider";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import "animate.css";
 import { ConfigProvider } from "antd";
 import type { Metadata } from "next";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -20,19 +25,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ConfigProvider theme={theme}>
-      <html lang="en">
-        <body
-          className={`${hindSiliguriFonts.variable} font-hindSiliguri antialiased`}
-        >
-          <AntdRegistry>
-            <Header />
-            {children}
-            <Footer />
-            <BottomNav />
-          </AntdRegistry>
-        </body>
-      </html>
-    </ConfigProvider>
+    <UserSessionProvider>
+      <ConfigProvider theme={theme}>
+        <html lang="en">
+          <body
+            className={`${hindSiliguriFonts.variable} font-hindSiliguri antialiased`}
+          >
+            <AuthProvider>
+              <Toaster />
+              <ApolloClientProvider>
+                <CartProvider>
+                  <AntdRegistry>
+                    <Header />
+                    {children}
+                    <Footer />
+                    <BottomNav />
+                  </AntdRegistry>
+                </CartProvider>
+              </ApolloClientProvider>
+            </AuthProvider>
+          </body>
+        </html>
+      </ConfigProvider>
+    </UserSessionProvider>
   );
 }

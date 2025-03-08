@@ -19,6 +19,10 @@ const theme: ThemeConfig = {
     Checkbox: {
       colorBorder: "gray",
     },
+    Rate: {
+      starSize: 13,
+      starColor: "#ffa534",
+    },
   },
 };
 

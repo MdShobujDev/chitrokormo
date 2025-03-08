@@ -1,58 +1,66 @@
 "use client";
 
+import { GET_CATEGORIES } from "@/lib/queries";
+import { useQuery } from "@apollo/client";
 import { Checkbox } from "antd";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-
-const CATEGORIES = [
-  { label: "Wallboards", value: "wallboards" },
-  { label: "Canvas Prints", value: "canvas-prints" },
-  { label: "Doya Cards", value: "doya-cards" },
-  { label: "Dawa Canvas", value: "dawa-canvas" },
-  { label: "Wall Hangings", value: "wall-hangings" },
-  { label: "Event Boards", value: "event-boards" },
-  { label: "Promotional Items", value: "promotional-items" },
-  { label: "Gift Items", value: "gift-items" },
-  { label: "Accessories", value: "accessories" },
-  { label: "Custom Products", value: "custom-products" },
-];
-
+import { useEffect, useMemo, useState } from "react";
+interface CategoryProps {
+  name: string;
+  documentId: string;
+  slug: string;
+  image: {
+    url: string;
+    name: string;
+  };
+}
 const ShopByCategory: React.FC = () => {
+  const { loading, error, data } = useQuery(GET_CATEGORIES);
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  // Get selected categories from URL (split by comma)
-  const selectedValues = searchParams.get("categories")?.split(",") || [];
+  // Get selected categories from URL
+  const selectedValues = useMemo(
+    () => searchParams.get("categories")?.split(",") || [],
+    [searchParams]
+  );
+
   const [checkedValues, setCheckedValues] = useState<string[]>(selectedValues);
 
-  // Sync state when URL query changes
+  // Sync state with URL changes (when manually updated)
   useEffect(() => {
-    setCheckedValues(searchParams.get("categories")?.split(",") || []);
-  }, [searchParams]);
+    setCheckedValues(selectedValues);
+  }, [selectedValues]);
 
   const handleChange = (values: string[]) => {
     setCheckedValues(values);
 
-    // Update search query
+    // Avoid updating URL if values are unchanged
+    if (values.join(",") === selectedValues.join(",")) return;
+
     const params = new URLSearchParams(searchParams.toString());
 
     if (values.length > 0) {
-      params.set("categories", values.join(",")); // Store as comma-separated string
+      params.set("categories", values.join(","));
     } else {
-      params.delete("categories"); // Remove if empty
+      params.delete("categories");
     }
 
     router.push(`?${params.toString()}`, { scroll: false });
   };
+
+  if (loading) return <p>Loading categories...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+  if (!data || !data.categories) return <p>No categories found.</p>;
 
   return (
     <div>
       <h2 className="text-xl font-medium">Shop By Category</h2>
       <Checkbox.Group value={checkedValues} onChange={handleChange}>
         <div className="flex flex-col">
-          {CATEGORIES.map((category) => (
-            <Checkbox key={category.value} value={category.value}>
-              {category.label}
+          {data.categories.map((category: CategoryProps) => (
+            <Checkbox key={category.slug} value={category.name}>
+              {category.name}
             </Checkbox>
           ))}
         </div>

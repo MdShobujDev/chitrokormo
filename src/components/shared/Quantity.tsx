@@ -1,35 +1,38 @@
 "use client";
 
 import { cn } from "@/utils/cn";
-import { useEffect, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 
 interface QuantityProps {
-  handleQuantity: (quantity: number) => void;
+  quantity: number;
+  handleDecrement: () => void;
+  handleIncrement: () => void;
   primary?: boolean;
   secondary?: boolean;
 }
 
 const Quantity: React.FC<QuantityProps> = ({
-  handleQuantity,
+  quantity,
+  handleDecrement,
+  handleIncrement,
   primary = false,
   secondary = false,
 }) => {
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
 
-  const handleDecrement = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
+  // const handleDecrement = () => {
+  //   if (quantity > 1) {
+  //     setQuantity(quantity - 1);
+  //   }
+  // };
 
-  const handleIncrement = () => {
-    setQuantity(quantity + 1);
-  };
+  // const handleIncrement = () => {
+  //   setQuantity(quantity + 1);
+  // };
 
-  useEffect(() => {
-    handleQuantity(quantity);
-  }, [quantity]);
+  // useEffect(() => {
+  //   handleQuantity(quantity);
+  // }, [quantity]);
 
   return (
     <div

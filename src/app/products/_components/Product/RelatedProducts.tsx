@@ -1,75 +1,60 @@
 import EmblaCarousel from "@/components/shared/EmblaCarouel";
 import ProductCard from "@/components/ui/ProductCard";
+import client from "@/lib/apollo-client";
+import { GET_RELATED_PRODUCTS } from "@/lib/queries";
 
-const items = [
-  {
-    id: 1,
-    title: "ডার্ক মোড ওয়ালপেপার ডার্ক মোড ওয়ালপেপারডার্ক মোড ওয়ালপেপার",
-    save: "5",
-    image:
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    link: "/",
-    discount_amoumt: "250",
-    main_amount: "299",
-    star: "5",
-  },
-  {
-    id: 2,
-    title: "ডার্ক মোড ওয়ালপেপার ডার্ক মোড ওয়ালপেপারডার্ক মোড ওয়ালপেপার",
-    save: "5",
-    image:
-      "https://images.unsplash.com/photo-1484101403633-562f891dc89a?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    link: "/",
-    discount_amoumt: "250",
-    main_amount: "299",
-    star: "5",
-  },
-  {
-    id: 3,
-    title: "ডার্ক মোড ওয়ালপেপার ডার্ক মোড ওয়ালপেপারডার্ক মোড ওয়ালপেপার",
-    save: "5",
-    image:
-      "https://images.unsplash.com/photo-1596900779744-2bdc4a90509a?q=80&w=1876&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    link: "/",
-    discount_amoumt: "250",
-    main_amount: "299",
-    star: "5",
-  },
-  {
-    id: 4,
-    title: "ডার্ক মোড ওয়ালপেপার ডার্ক মোড ওয়ালপেপারডার্ক মোড ওয়ালপেপার",
-    save: "5",
-    image:
-      "https://images.unsplash.com/photo-1582037928769-181f2644ecb7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    link: "/",
-    discount_amoumt: "250",
-    main_amount: "299",
-    star: "5",
-  },
-  {
-    id: 5,
-    title: "ডার্ক মোড ওয়ালপেপার ডার্ক মোড ওয়ালপেপারডার্ক মোড ওয়ালপেপার",
-    save: "5",
-    image:
-      "https://images.unsplash.com/photo-1608235375712-be654ace4420?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    link: "/",
-    discount_amoumt: "250",
-    main_amount: "299",
-    star: "5",
-  },
-  {
-    id: 6,
-    title: "ডার্ক মোড ওয়ালপেপার ডার্ক মোড ওয়ালপেপারডার্ক মোড ওয়ালপেপার",
-    save: "5",
-    image:
-      "https://images.unsplash.com/photo-1571907483083-af70aeda3285?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    link: "/",
-    discount_amoumt: "250",
-    main_amount: "299",
-    star: "5",
-  },
-];
-const RelatedProducts = () => {
+interface ImageProps {
+  name: string;
+  url: string;
+}
+interface ReviewProps {
+  rating: number;
+}
+interface VariantProps {
+  price: number;
+}
+interface ProductProps {
+  SKU: string;
+  documentId: string;
+  off: number;
+  title: string;
+  images: ImageProps[];
+  reviews: ReviewProps[];
+  variant: VariantProps[];
+}
+
+interface CategoriesProps {
+  products: ProductProps[];
+}
+const RelatedProducts = async ({ id }: { id: string }) => {
+  const { data } = await client.query({
+    query: GET_RELATED_PRODUCTS,
+    variables: {
+      documentId: id,
+      pagination: {
+        limit: 10,
+      },
+    },
+  });
+  // console.log("data", data);
+  function flattenAndRemoveDuplicates(categories: CategoriesProps[]) {
+    const uniqueProducts = new Map();
+    categories.forEach((category: CategoriesProps) => {
+      category.products.forEach((product: ProductProps) => {
+        if (!uniqueProducts.has(product.documentId)) {
+          uniqueProducts.set(product.documentId, product);
+        }
+      });
+    });
+
+    return Array.from(uniqueProducts.values());
+  }
+
+  const uniqueProducts = flattenAndRemoveDuplicates(data?.product?.categories);
+  const relatedProducts = uniqueProducts.filter(
+    (product) => product.documentId !== id
+  );
+
   return (
     <section className=" max-w-7xl mx-auto  md:pt-10 pt-5 ">
       <h1 className=" sm:text-2xl text-xl font-bold text-primary">
@@ -77,12 +62,12 @@ const RelatedProducts = () => {
       </h1>
       <div>
         <EmblaCarousel dragFree arrowButtons>
-          {items.map((item) => (
+          {relatedProducts.map((item, index) => (
             <div
-              key={item.id}
+              key={index}
               className="[flex:0_0_65%] min-[400px]:[flex:0_0_50%]  min-[500px]:[flex:0_0_45%] sm:[flex:0_0_35%] md:[flex:0_0_30%] min-[880px]:[flex:0_0_27%] lg:[flex:0_0_19%] flex flex-col justify-between gap-3 py-3 cursor-pointer select-none"
             >
-              <ProductCard data={item} />
+              <ProductCard product={item} />
             </div>
           ))}
         </EmblaCarousel>

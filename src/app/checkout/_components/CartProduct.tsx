@@ -1,39 +1,76 @@
 "use client";
 import Quantity from "@/components/shared/Quantity";
+import { useCart } from "@/context/CartContext";
+import formatteeNumber from "@/utils/formatteNumber";
 import { Badge } from "antd";
 import Image from "next/image";
 import { useState } from "react";
 import { FaXmark } from "react-icons/fa6";
 
-const CartProduct = () => {
-  const [quantity, setQuantity] = useState(1);
-  const handleQuantity = (quantity: number) => {
-    setQuantity(quantity);
+interface Image {
+  name: string;
+  url: string;
+}
+
+interface ItemProps {
+  id: string;
+  price: number;
+  size: string;
+  slug: string;
+  product_quantity: number;
+  product: {
+    documentId: string;
+    title: string;
+    images: Image[];
+  };
+}
+const CartProduct = ({ item, id }: { item: ItemProps; id: string }) => {
+  const [quantity, setQuantity] = useState(item?.product_quantity);
+  const { updateCartItem, deleteCartItem } = useCart();
+
+  const handleIncrement = async () => {
+    await updateCartItem(id, item.slug, quantity + 1);
+  };
+  const handleDecrement = async () => {
+    if (quantity > 1) {
+      await updateCartItem(id, item.slug, quantity - 1);
+    }
+  };
+  const handleDelete = async () => {
+    await deleteCartItem(id, item.slug);
   };
   return (
     <div className=" flex justify-between gap-4">
-      <div className="flex gap-2">
-        <Badge count={quantity}>
+      <div className="flex gap-3">
+        <Badge count={item?.product_quantity} size="small">
           <div className="rounded overflow-hidden ">
             <Image
-              src="https://plus.unsplash.com/premium_photo-1680850209265-e4b77199e6bb?q=80&w=2061&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-              width={80}
-              height={80}
-              className="object-cover"
+              src={item.product.images[0].url}
+              alt={item.product.images[0].name}
+              width={100}
+              height={100}
+              className=" aspect-[6/5]"
             />
           </div>
         </Badge>
         <div className=" flex flex-col justify-between ">
-          <p className=" line-clamp-1">ক্যানভাস প্রিন্ট</p>
+          <p className=" text-sm line-clamp-1">{item.product.title}</p>
           <div>
-            <Quantity handleQuantity={handleQuantity} secondary />
+            <Quantity
+              quantity={quantity}
+              handleDecrement={handleDecrement}
+              handleIncrement={handleIncrement}
+              secondary
+            />
           </div>
         </div>
       </div>
       <div className=" flex flex-col justify-between items-end ">
-        <p>2,400.00৳</p>
-        <button className=" hover:text-primary transition-all">
+        <p className=" text-sm">{formatteeNumber(item.price * quantity)}৳</p>
+        <button
+          onClick={handleDelete}
+          className=" hover:text-primary transition-all"
+        >
           <FaXmark />
         </button>
       </div>

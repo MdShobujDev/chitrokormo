@@ -3,7 +3,7 @@ import { useState } from "react";
 import Quantity from "../../../../components/shared/Quantity";
 import AddToCartButton from "./AddToCartButton";
 
-const ProductCart = () => {
+const ProductCart = ({ price }: any) => {
   const [totalQuantity, setTotalQuantity] = useState(1);
   const handleQuantity = (quantity: number) => {
     setTotalQuantity(quantity);
@@ -14,7 +14,7 @@ const ProductCart = () => {
         <Quantity handleQuantity={handleQuantity} primary />
       </div>
       <div className=" flex-1 w-full">
-        <AddToCartButton totalQuantity={totalQuantity} />
+        <AddToCartButton totalQuantity={totalQuantity} price={price} />
       </div>
     </div>
   );

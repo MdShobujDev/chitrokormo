@@ -1,6 +1,11 @@
+"use client";
+import calculateDiscountedPrice from "@/utils/calculateDiscountPrice";
+import { calculateAverageRating } from "@/utils/getAverageRating";
+import { Rate } from "antd";
 import Link from "next/link";
+import { useState } from "react";
 import { FaRegQuestionCircle } from "react-icons/fa";
-import { FaRegClock, FaStar, FaTruckFast } from "react-icons/fa6";
+import { FaRegClock, FaTruckFast } from "react-icons/fa6";
 import { GoArrowUpRight, GoShareAndroid } from "react-icons/go";
 import {
   RiMastercardFill,
@@ -9,36 +14,102 @@ import {
 } from "react-icons/ri";
 import { TbCurrencyTaka, TbTruckReturn } from "react-icons/tb";
 import ProductCart from "./ProductCart";
+import Variant from "./Variant";
 
-const ProductDetails = () => {
+interface CategoryProps {
+  name: string;
+  slug: string;
+}
+interface List {
+  id: string;
+  item: string;
+}
+
+interface ListItems {
+  id: string;
+  title: string;
+  list: List[];
+}
+interface DescriptionProps {
+  id: string;
+  summary: string;
+  list_items: ListItems[];
+}
+interface ImageProps {
+  name: string;
+  url: string;
+}
+interface ReviewProps {
+  date: string;
+  documentId: string;
+  rating: number;
+  review: string;
+  user_permissions_user: {
+    username: string;
+  };
+}
+interface VariantProps {
+  available_quantity: number;
+  id: string;
+  price: number;
+  size: string;
+  stock_status: string;
+}
+interface ProductProps {
+  product: {
+    SKU: string;
+    documentId: string;
+    off: number;
+    title: string;
+    total_sale: number;
+    categories: CategoryProps[];
+    description: DescriptionProps;
+    images: ImageProps[];
+    reviews: ReviewProps[];
+    variant: VariantProps[];
+  };
+}
+
+const ProductDetails: React.FC<ProductProps> = ({ product }) => {
+  const [price, setPrice] = useState(product?.variant[0].price);
+  const handlePrice = (price: number = 0) => {
+    setPrice(price);
+  };
+
   return (
     <section className=" flex flex-col gap-3">
       {/* product category and review amounts start  */}
       <div className="flex min-[400px]:gap-10 items-center gap-5 ">
         <div className=" sm:text-base text-sm">
-          ক্যাটাগরি: <span className=" text-primary">প্রসাধনী স্টিকার</span>
+          ক্যাটাগরি:{" "}
+          {product?.categories?.map((category, index) => (
+            <span key={category?.slug} className=" text-primary">
+              {category?.name}
+              {index < product.categories.length - 1 && ", "}
+            </span>
+          ))}
         </div>
-        <div className="flex gap-1">
-          <div className=" flex items-center gap-1 text-orange-400 sm:text-[.7rem] text-[.6rem]">
-            <FaStar />
-            <FaStar />
-            <FaStar />
-            <FaStar />
-            <FaStar />
-          </div>
-          <p className=" sm:text-base text-sm">(2 review)</p>
+        <div className="flex gap-1 items-center">
+          <Rate
+            disabled
+            allowHalf
+            defaultValue={calculateAverageRating(product?.reviews)}
+          />
+          <p className=" sm:text-base text-sm">
+            ({product?.reviews.length} reviews)
+          </p>
         </div>
       </div>
       {/* product category and review amounts end  */}
 
       {/* title & stock info start */}
-      <h1 className=" sm:text-2xl text-xl sm:font-medium font-semibold line-clamp-2">
-        ডার্ক মোড ওয়ালপেপার
+      <h1 className=" sm:text-2xl text-xl sm:font-medium font-semibold">
+        {product?.title}
       </h1>
-      <div className=" border-[1.5px] text-gray-800 max-w-max px-3 py-0.5 border-primary font-medium rounded sm:text-sm text-xs">
-        In stock
-      </div>
-      {/* title & stock info end */}
+
+      {/* product  variant start */}
+      <Variant variant={product?.variant} handlePrice={handlePrice} />
+      {/* product variant end */}
 
       {/* product price info start */}
       <div className=" flex items-center gap-2">
@@ -46,14 +117,16 @@ const ProductDetails = () => {
           <span className=" text-3xl sm:text-4xl">
             <TbCurrencyTaka />
           </span>
-          <h2 className=" mt-[2px] sm:text-4xl text-xl font-bold ">250</h2>
+          <h2 className=" mt-[2px] sm:text-4xl text-xl font-bold ">
+            {calculateDiscountedPrice(price, product?.off)}
+          </h2>
         </div>
         <div className=" flex items-center text-gray-600">
           <span>
             <TbCurrencyTaka size={15} />
           </span>
           <h2 className=" mt-[2px] line-through font-light  sm:text-base text-sm">
-            299
+            {price}
           </h2>
         </div>
       </div>
@@ -62,7 +135,7 @@ const ProductDetails = () => {
       {/* cart & buy now button start */}
       <div className=" flex min-[1035px]:flex-row md:flex-col min-[500px]:flex-row flex-col  gap-3">
         <div>
-          <ProductCart />
+          <ProductCart price={calculateDiscountedPrice(price, product?.off)} />
         </div>
         <Link
           className="flex-1 flex items-center justify-center gap-1 px-4 py-2 sm:text-base text-sm  hover:bg-black bg-primary text-white rounded-3xl  transition-all ease-linear duration-200"

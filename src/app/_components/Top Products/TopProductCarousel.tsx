@@ -43,13 +43,6 @@ const TopProductCarousel = () => {
             backgroundImage: `url(${item.image})`,
           }}
         >
-          {/* <Image
-            src={item.image}
-            alt="img"
-            width={900}
-            height={900}
-            className=" md:aspect-[20/11] aspect-[16/6]"
-          /> */}
           <div className=" bg-black/30 text-white sm:p-10 p-6 h-full w-full">
             <h1 className=" lg:text-4xl min-[980px]:text-3xl md:text-2xl min-[550px]:text-3xl text-2xl font-bold">
               {item.title}

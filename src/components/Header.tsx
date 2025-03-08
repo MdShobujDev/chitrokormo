@@ -51,7 +51,7 @@ const Header = () => {
                 শপ
               </Link>
               <Link
-                href="/"
+                href="/register"
                 className=" text-lg font-medium px-3 py-2 hover:text-primary transition-all ease-linear duration-200"
               >
                 আমাদের সম্পর্কে
@@ -108,7 +108,7 @@ const Header = () => {
           </Link>
           <Link
             onClick={() => setToggle(!toggle)}
-            href="/"
+            href="/register"
             className=" text-lg font-medium px-5 py-2 hover:text-primary transition-all ease-linear duration-200 hover:bg-primary/5"
           >
             আমাদের সম্পর্কে

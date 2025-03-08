@@ -1,15 +1,34 @@
-// "use client";
+"use client";
+import { useCart } from "@/context/CartContext";
 import CartProduct from "./CartProduct";
 import CouponCode from "./CouponCode";
+interface Image {
+  name: string;
+  url: string;
+}
 
+interface ItemProps {
+  id: string;
+  price: number;
+  size: string;
+  slug: string;
+  product_quantity: number;
+  product: {
+    documentId: string;
+    title: string;
+    images: Image[];
+  };
+}
 const CheckoutCart = () => {
+  const { cart, loading } = useCart();
   return (
     <section className=" bg-gray-50 p-5 rounded-md shadow flex flex-col gap-8">
       <h1 className=" text-2xl font-medium">আপনার কার্ট</h1>
       {/* pruducts */}
       <div className=" flex flex-col gap-4">
-        <CartProduct />
-        <CartProduct />
+        {cart?.cart_products?.map((item: ItemProps) => (
+          <CartProduct key={item.id} item={item} id={cart?.documentId} />
+        ))}
       </div>
       {/* coupon code  */}
       <CouponCode />

@@ -16,7 +16,7 @@ const TopProduct = () => {
             alt="img"
             width={700}
             height={700}
-            className=" aspect-[18/20] "
+            className=" aspect-[18/20] h-full "
           />
         </div>
         {/* slider  */}
@@ -29,7 +29,7 @@ const TopProduct = () => {
             alt="img"
             width={700}
             height={700}
-            className=" aspect-[18/20]"
+            className=" aspect-[18/20] h-full"
           />
         </div>
       </div>
