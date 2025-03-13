@@ -62,15 +62,14 @@ export const authOptions: AuthOptions = {
             };
           }
           return null;
-        } catch (error) {
-          if (axios.isAxiosError(error) && error.response) {
-            throw new Error(
-              `Invalid credentials: ${error.response.data.message}`
-            );
-          } else if (error instanceof Error) {
-            throw new Error(`Invalid credentials: ${error.message}`);
-          } else {
+        } catch (error: unknown) {
+          if (error instanceof Error) {
             throw new Error("Invalid credentials");
+          } else {
+            throw new Error(
+              "An unknown error occurred",
+              (error as any).message
+            );
           }
         }
       },
