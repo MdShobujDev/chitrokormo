@@ -33,9 +33,7 @@ export const authOptions: AuthOptions = {
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(
-        credentials
-      ): Promise<{
+      async authorize(credentials): Promise<{
         id: string;
         name: string;
         email: string;
@@ -65,7 +63,7 @@ export const authOptions: AuthOptions = {
           }
           return null;
         } catch (error) {
-          throw new Error("Invalid credentials");
+          throw new Error("Invalid credentials", (error as any).message);
         }
       },
     }),
