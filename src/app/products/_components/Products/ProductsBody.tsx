@@ -29,10 +29,16 @@ const items = [
     ],
     variant: [
       {
-        price: 2334,
+        price: 222,
+        size: "22*1",
+        available_quantity: 21,
+        stock_status: "stock",
       },
       {
-        price: 3344,
+        price: 222,
+        size: "22*1",
+        available_quantity: 21,
+        stock_status: "stock",
       },
     ],
   },

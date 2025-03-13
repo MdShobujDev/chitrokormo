@@ -14,6 +14,9 @@ interface Review {
 
 interface Variant {
   price: number;
+  size: string;
+  available_quantity: number;
+  stock_status: string;
 }
 
 interface ProductProps {

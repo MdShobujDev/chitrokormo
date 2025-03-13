@@ -4,6 +4,7 @@ import { useCart } from "@/context/CartContext";
 import formatteeNumber from "@/utils/formatteNumber";
 import { Badge } from "antd";
 import Image from "next/image";
+import toast from "react-hot-toast";
 import { FaXmark } from "react-icons/fa6";
 
 interface Image {
@@ -37,6 +38,7 @@ const CartProduct = ({ item, id }: { item: ItemProps; id: string }) => {
   };
   const handleDelete = async () => {
     await deleteCartItem(id, item.slug);
+    toast.remove("Product deleted successfully!");
   };
   return (
     <div className=" flex justify-between gap-4">

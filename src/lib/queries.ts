@@ -16,6 +16,9 @@ export const GET_PRODUCTS = gql`
       }
       variant {
         price
+        size
+        available_quantity
+        stock_status
       }
     }
   }
@@ -135,6 +138,9 @@ export const GET_TRENDING_PRODUCTS = gql`
       }
       variant {
         price
+        size
+        available_quantity
+        stock_status
       }
     }
   }
@@ -155,6 +161,9 @@ export const GET_FLASH_SALE_PRODUCTS = gql`
       }
       variant {
         price
+        size
+        available_quantity
+        stock_status
       }
     }
   }
