@@ -63,7 +63,15 @@ export const authOptions: AuthOptions = {
           }
           return null;
         } catch (error) {
-          throw new Error("Invalid credentials", (error as any).message);
+          if (axios.isAxiosError(error) && error.response) {
+            throw new Error(
+              `Invalid credentials: ${error.response.data.message}`
+            );
+          } else if (error instanceof Error) {
+            throw new Error(`Invalid credentials: ${error.message}`);
+          } else {
+            throw new Error("Invalid credentials");
+          }
         }
       },
     }),
