@@ -52,7 +52,8 @@ export const authOptions: AuthOptions = {
             };
           }
           return null;
-        } catch (_error) {
+        } catch (error) {
+          const _ = error;
           throw new Error("Invalid credentials");
         }
       },
