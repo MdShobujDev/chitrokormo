@@ -1,10 +1,36 @@
 import axios from "axios";
-import NextAuth from "next-auth";
+import NextAuth, { type AuthOptions, type User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 const STRAPI_URL = process.env.STRAPI_URL;
 
-export const authOptions = {
+// Extend the built-in NextAuth types
+interface StrapiUser extends User {
+  username?: string;
+  jwt?: string;
+}
+
+// Declare module augmentation for Session
+declare module "next-auth" {
+  interface Session {
+    jwt?: string;
+  }
+
+  // Extend the built-in User type
+  interface User {
+    jwt?: string;
+    username?: string;
+  }
+}
+
+// Declare module augmentation for JWT
+declare module "next-auth/jwt" {
+  interface JWT {
+    jwt?: string;
+  }
+}
+
+export const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -21,25 +47,29 @@ export const authOptions = {
 
           const { jwt, user } = response.data;
           if (user) {
-            return { id: user.id, name: user.username, email: user.email, jwt };
+            return {
+              id: user.id,
+              name: user.username,
+              email: user.email,
+              jwt,
+              username: user.username,
+            };
           }
           return null;
-        } catch (error) {
+        } catch (_error) {
           throw new Error("Invalid credentials");
         }
       },
     }),
   ],
   callbacks: {
-    async jwt({ token, user }: { token: any; user?: any }) {
-      console.log("t", token);
-      console.log("u", user);
+    async jwt({ token, user }) {
       if (user) {
-        token.jwt = user.jwt; // Store JWT token in session
+        token.jwt = user.jwt;
       }
       return token;
     },
-    async session({ session, token }: { session: any; token: any }) {
+    async session({ session, token }) {
       session.jwt = token.jwt;
       return session;
     },
