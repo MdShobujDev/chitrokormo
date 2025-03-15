@@ -1,14 +1,10 @@
 import axios from "axios";
-import NextAuth, { type AuthOptions, type User } from "next-auth";
+import NextAuth, { type AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 const STRAPI_URL = process.env.STRAPI_URL;
 
 // Extend the built-in NextAuth types
-interface StrapiUser extends User {
-  username?: string;
-  jwt?: string;
-}
 
 // Declare module augmentation for Session
 declare module "next-auth" {
