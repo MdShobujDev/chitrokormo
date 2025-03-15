@@ -53,7 +53,8 @@ export const authOptions: AuthOptions = {
           }
           return null;
         } catch (error) {
-          const _ = error;
+          const err = error;
+          console.log(err);
           throw new Error("Invalid credentials");
         }
       },
